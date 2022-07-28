@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
 
 const Main = () => {
     const [beers, setBeers] = useState([]);
@@ -37,7 +38,7 @@ const Main = () => {
             <div className={'flex gap-4 justify-center flex-wrap'}>
                 {
                     beers.map(beer =>
-                        <div key={beer.id} className={'flex flex-col items-center border w-2/5 p-4'}>
+                        <Link to={'/'+beer.id} key={beer.id} className={'flex flex-col items-center border w-2/5 p-4'}>
                             <img className={'w-20 mb-6'} src={beer.image_url} alt=""/>
                             <div>
                                 <div className={'font-bold text-center'}>
@@ -48,7 +49,7 @@ const Main = () => {
                                     {beer.description.length > 140 ? (beer.description.substr(0, 140) + '...') : beer.description}
                                 </div>
                             </div>
-                        </div>
+                        </Link>
                     )
                 }
             </div>
